@@ -1,0 +1,365 @@
+resources:
+  - name: "nmap"
+    description: "Network exploration tool and security/port scanner"
+    recommended: true
+    categories: ["essentials", "network-recon"]
+    level: 1
+    software: true
+    docs: |
+      # Nmap Cheat Sheet
+
+      ## Basic Commands
+      - **Scan a single IP**:
+        `nmap <target-ip>`
+
+      - **Scan a range of IPs**:
+        `nmap <start-ip>-<end-ip>`
+
+      - **Scan a subnet**:
+        `nmap <subnet>/24`
+
+      ## Port Scanning
+      - **Scan specific ports**:
+        `nmap -p <port> <target-ip>`
+
+      - **Scan a range of ports**:
+        `nmap -p <start-port>-<end-port> <target-ip>`
+
+      ## Service & OS Detection
+      - **Service version detection**:
+        `nmap -sV <target-ip>`
+
+      - **OS detection**:
+        `nmap -O <target-ip>`
+
+      ## Aggressive Scan
+      - **Run an aggressive scan**:
+        `nmap -A <target-ip>`
+
+      ## Output Formats
+      - **Save output to a file**:
+        `nmap -oN <filename.txt> <target-ip>`
+
+      - **Save output as XML**:
+        `nmap -oX <filename.xml> <target-ip>`
+
+      ## Other Useful Options
+      - **Ping scan (host discovery)**:
+        `nmap -sn <target-ip>`
+
+      - **Stealth scan (SYN scan)**:
+        `nmap -sS <target-ip>`
+  - name: "gobuster"
+    description: "Directory/file & DNS busting tool written in Go"
+    recommended: true
+    categories: ["web-recon"]
+    level: 1
+    software: true
+    docs: "# Gobuster Cheat Sheet\n\n## Directory/File Bruteforce\n- **Bruteforce directories**:  \n  `gobuster dir -u <url> -w <wordlist>`\n\n- **Specify extensions**:  \n  `gobuster dir -u <url> -w <wordlist> -x <ext1>,<ext2>`\n\n## DNS Subdomain Bruteforce\n- **Bruteforce subdomains**:  \n  `gobuster dns -d <domain> -w <wordlist>`\n\n## Virtual Host Scan\n- **Scan for virtual hosts**:  \n  `gobuster vhost -u <url> -w <wordlist>`\n\n## Common Options\n- **Set the number of concurrent threads**:  \n  `-t <number>`\n\n- **Show detailed output (verbose)**:  \n  `-v`\n\n- **Set the timeout for requests**:  \n  `-to <seconds>`\n\n- **Save output to a file**:  \n  `-o <file>`\n\"\n"
+  - name: "metasploit-framework"
+    description: "Penetration testing framework"
+    recommended: false
+    categories: ["essentials", "exploitation"]
+    level: 3
+    software: true
+  - name: "sqlmap"
+    description: "Automated SQL injection tool"
+    recommended: true
+    categories: ["database", "web-exploitation"]
+    level: 2
+    software: true
+    docs: |
+      # SQLmap Cheat Sheet
+
+      ## Basic Commands
+      - **Basic SQL injection test**:
+        `sqlmap -u <url>`
+
+      - **Specify request method (GET/POST)**:
+        `sqlmap -u <url> --method=<GET|POST>`
+
+      - **Specify parameters for testing**:
+        `sqlmap -u <url> -p <param>`
+
+      ## Database Enumeration
+      - **Enumerate databases**:
+        `sqlmap -u <url> --dbs`
+
+      - **Enumerate tables in a database**:
+        `sqlmap -u <url> -D <database> --tables`
+
+      - **Dump data from a table**:
+        `sqlmap -u <url> -D <database> -T <table> --dump`
+
+      ## Authentication & Cookies
+      - **Provide session cookie**:
+        `sqlmap -u <url> --cookie="<cookie>"`
+  - name: "hydra"
+    description: "Parallelized login cracker supporting numerous protocols"
+    recommended: true
+    categories: ["password-cracking", "network"]
+    level: 2
+    software: true
+    docs: |
+      # Hydra Cheat Sheet
+
+      ## Basic Usage
+      - **Brute-force login with a protocol**:
+        `hydra -l <username> -P <password-list> <target> <protocol>`
+
+      ## Common Options
+      - **Use a specific port**:
+        `-s <port>`
+
+      - **Specify number of threads**:
+        `-t <threads>`
+
+      - **Verbose output**:
+        `-vV`
+  - name: "john"
+    description: "Password cracker (John the Ripper)"
+    recommended: true
+    categories: ["password-cracking"]
+    level: 2
+    software: true
+    docs: |
+      # John the Ripper Cheat Sheet
+
+      ## Basic Usage
+      - **Crack password hash from a file**:
+        `john <hash-file>`
+
+      - **Specify a wordlist**:
+        `john --wordlist=<wordlist.txt> <hash-file>`
+
+      ## Hash Management
+      - **Show cracked passwords**:
+        `john --show <hash-file>`
+
+      - **Resume a session**:
+        `john --restore`
+  - name: "aircrack-ng"
+    description: "Wi-Fi security auditing tool"
+    recommended: false
+    categories: ["wireless", "network-recon"]
+    level: 3
+    software: true
+    docs: ""
+  - name: "wireshark"
+    description: "Network protocol analyzer and packet sniffer"
+    recommended: true
+    categories: ["network-recon", "packet-analysis"]
+    level: 1
+    software: true
+    docs: |
+      # Wireshark Cheat Sheet
+
+      ## Basic Usage
+      - **Start capturing packets on an interface**:
+        `wireshark -i <interface>`
+
+      - **Filter packets by IP**:
+        `ip.addr == <IP-address>`
+
+      ## Filtering Examples
+      - **Filter packets by port**:
+        `tcp.port == <port-number>`
+
+      - **Filter HTTP traffic**:
+        `http`
+
+      - **Filter packets containing specific data**:
+        `frame contains "<data>"`
+  - name: "netcat"
+    description: "Network utility for reading/writing to network connections"
+    recommended: true
+    categories: ["network", "essentials"]
+    level: 1
+    software: true
+    docs: |
+      # Netcat Cheat Sheet
+
+      ## Basic Usage
+      - **Connect to a server**:
+        `nc <target-ip> <port>`
+
+      - **Start a listener**:
+        `nc -lvp <port>`
+
+      ## File Transfers
+      - **Send a file**:
+        `nc <target-ip> <port> < <filename>`
+
+      - **Receive a file**:
+        `nc -lvp <port> > <filename>`
+  - name: "nikto"
+    description: "Web server scanner for detecting vulnerabilities"
+    recommended: true
+    categories: ["web-recon", "essentials"]
+    level: 1
+    software: true
+    docs: |
+      # Nikto Cheat Sheet
+
+      ## Basic Scanning
+      - **Scan a website for vulnerabilities**:
+        `nikto -h <target-url>`
+
+      ## Common Options
+      - **Set output file**:
+        `-o <filename>`
+
+      - **Use SSL**:
+        `-ssl`
+  - name: "recon-ng"
+    description: "Web reconnaissance framework with modular functions"
+    recommended: false
+    categories: ["network-recon", "web-recon"]
+    level: 2
+    software: true
+  - name: "burpsuite"
+    description: "Web vulnerability scanner and proxy tool"
+    recommended: true
+    categories: ["web-exploitation", "essentials"]
+    level: 2
+    software: true
+  - name: "hashcat"
+    description: "Advanced password recovery and hash cracking tool"
+    recommended: false
+    categories: ["password-cracking"]
+    level: 3
+    software: true
+  - name: "openvas"
+    description: "Open Vulnerability Assessment Scanner"
+    recommended: false
+    categories: ["vulnerability-assessment", "essentials"]
+    level: 3
+    software: true
+  - name: "ettercap"
+    description: "Network security tool for MITM attacks"
+    recommended: false
+    categories: ["network", "machine-in-the-middle"]
+    level: 3
+    software: true
+  - name: "yara"
+    description: "Tool for identifying and classifying malware samples"
+    recommended: false
+    categories: ["malware-analysis"]
+    level: 2
+    software: true
+  - name: "volatility"
+    description: "Advanced memory forensics framework"
+    recommended: false
+    categories: ["forensics"]
+    level: 3
+    software: true
+  - name: "radare2"
+    description: "Reverse engineering framework"
+    recommended: false
+    categories: ["reverse-engineering"]
+    level: 3
+    software: true
+  - name: "binwalk"
+    description: "Firmware analysis tool for extracting file contents"
+    recommended: false
+    categories: ["forensics", "reverse-engineering"]
+    level: 2
+    software: true
+  - name: "hash-identifier"
+    description: "Tool for identifying types of password hashes"
+    recommended: true
+    categories: ["password-cracking"]
+    level: 1
+    software: true
+  - name: "exiftool"
+    description: "Tool for extracting metadata from files"
+    recommended: true
+    categories: ["forensics", "essentials"]
+    level: 1
+    software: true
+  - name: "testssl"
+    description: "Tool for testing SSL/TLS configurations"
+    recommended: true
+    categories: ["network", "vulnerability-assessment"]
+    level: 2
+    software: true
+  - name: "snort"
+    description: "Intrusion detection and prevention system"
+    recommended: false
+    categories: ["network", "intrusion-detection"]
+    level: 3
+    software: true
+  - name: "zaproxy"
+    description: "Web application security testing tool"
+    recommended: true
+    categories: ["web-recon", "web-exploitation"]
+    level: 2
+    software: true
+  - name: "ffuf"
+    description: "Fast web fuzzer for content discovery"
+    recommended: true
+    categories: ["web-recon"]
+    level: 1
+    software: true
+  - name: "social-engineer-toolkit"
+    description: "Social engineering and phishing toolkit"
+    recommended: false
+    categories: ["social-engineering"]
+    level: 2
+    software: true
+  - name: "amass"
+    description: "Tool for subdomain enumeration and network mapping"
+    recommended: true
+    categories: ["network-recon"]
+    level: 2
+    software: true
+  - name: "CyberChef"
+    docs: "https://gchq.github.io/CyberChef"
+    description: "The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis"
+    recommended: true
+    software: false
+    categories: ["essentials", "reverse-engineering"]
+    level: 1
+  - name: "Internal All The Things"
+    docs: "https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/#bash-tcp"
+    description: "Reverse Shell Cheat Sheet (recommended: Bash TCP / UDP)"
+    recommended: true
+    software: false
+    categories: ["exploitation", "web-exploitation"]
+    level: 2
+  - name: "cuckoo"
+    description: "Automated malware analysis system"
+    recommended: false
+    categories: ["malware-analysis"]
+    level: 3
+    software: true
+  - name: "impacket"
+    description: "Collection of tools for working with network protocols"
+    recommended: false
+    categories: ["network", "exploitation"]
+    level: 3
+    software: true
+  - name: "dnsrecon"
+    description: "DNS enumeration tool"
+    recommended: true
+    categories: ["network-recon"]
+    level: 1
+    software: true
+  - name: "sublist3r"
+    description: "Subdomain enumeration tool"
+    recommended: true
+    categories: ["network-recon"]
+    level: 1
+    software: true
+  - name: "enum4linux"
+    description: "Tool for enumerating information from Windows and Samba"
+    recommended: true
+    categories: ["network-recon"]
+    level: 2
+    software: true
+  - name: "powersploit"
+    description: "Collection of Microsoft PowerShell scripts for penetration testing"
+    recommended: false
+    categories: ["exploitation", "network"]
+    level: 3
+    software: true
