@@ -29,12 +29,8 @@ t00lbox is a small CLI tool that displays a searchable list of packages and reso
 * Prerequsites
     * go >= 1.23.2
 
-
 ```bash
-  git clone https://github.com/burgr033/t00lbox
-  cd t00lbox
-  go mod tidy
-  go build github.com/burgr033/t00lbox/cmd/t00lbox
+  go install github.com/burgr033/t00lbox/cmd/t00lbox
 ```
 
 ## Acknowledgements

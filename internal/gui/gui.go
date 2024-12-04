@@ -147,7 +147,7 @@ func (m model) View() string {
 
 // CreateProgram loads the resources file, creates the model and launches the actual program
 func CreateProgram(resourcesPath string) (*tea.Program, error) {
-	resourcesFile, err := file.LoadResources(resourcesPath)
+	resourcesFile, err := file.LoadResources()
 	if err != nil {
 		return nil, fmt.Errorf("error loading %s: %w", resourcesPath, err)
 	}

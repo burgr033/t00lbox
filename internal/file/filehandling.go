@@ -3,6 +3,7 @@ package file
 import (
 	"os"
 
+	"github.com/adrg/xdg"
 	"github.com/go-yaml/yaml"
 )
 
@@ -23,8 +24,12 @@ type ResourcesFile struct {
 }
 
 // LoadResources reading the file and unmarshaling the yaml
-func LoadResources(filename string) (*ResourcesFile, error) {
-	data, err := os.ReadFile(filename)
+func LoadResources() (*ResourcesFile, error) {
+	configFilePath, err := xdg.ConfigFile("t00lbox/resources.yml")
+	if err != nil {
+		return nil, err
+	}
+	data, err := os.ReadFile(configFilePath)
 	if err != nil {
 		return nil, err
 	}
