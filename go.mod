@@ -1,3 +1,4 @@
+// Deprecated: use codeberg.org/burgr/t00lbox instead.
 module github.com/burgr033/t00lbox
 
 go 1.23.2
